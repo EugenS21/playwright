@@ -3,7 +3,7 @@ package org.eugens21.luma.properties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.eugens21.luma.properties.user_interface.UserInterface;
+import org.eugens21.luma.properties.pages.common.CommonPageDetails;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
@@ -14,11 +14,10 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor
 @FieldDefaults(level = PRIVATE)
 @ConfigurationPropertiesScan
-@ConfigurationProperties(prefix = "luma")
-public class Application {
+@ConfigurationProperties(prefix = "pages")
+public class PageLocators {
 
-    String url;
     @NestedConfigurationProperty
-    UserInterface userInterface;
+    CommonPageDetails common;
 
 }

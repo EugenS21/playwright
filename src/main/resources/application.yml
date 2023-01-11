@@ -1,9 +1,106 @@
+spring:
+  main:
+    lazy-initialization: true
 luma:
   url: https://magento.softwaretestingboard.com/
   userInterface:
+    enabled: true
     playwright:
-      createOptions:
-        key: "value"
-      browserType: chromium
-
+      #      createOptions:
+      #        key: "value"
+      browser:
+        type: chromium
+        launchOptions:
+          #          args:
+          #            - --my-arg
+          #            - --my-arg1
+          #            - --my-arg2
+          #          channel: chrome
+          #          chromiumSandbox: false
+          devTools: false
+          downloadsPath: "/home/eugen/Downloads"
+          #          env:
+          #            key: "value"
+          #            key1: "value1"
+          #          executablePath: ""
+          #          firefoxUserPrefs:
+          #            key: "value"
+          #            key1: "value1"
+          headless: false
+          #          ignoreAllDefaultArgs: false
+          #          ignoreDefaultArgs:
+          #            - arg1
+          #            - arg2
+          #            - arg3
+          #          proxy: "localhost://my.proxy/server"
+          #          slowMo: 2.0
+          timeout: 10000
+          tracesDir: "/home/eugen/Downloads"
+        contextOptions:
+          acceptDownloads: true
+          baseUrl: ${luma.url}
+          #          bypassCSP: false
+          #          proxy: "localhost://my.proxy/server"
+          colorScheme: "dark"
+          #          deviceScaleFactor: 1.0
+          #          extraHTTPHeaders:
+          #            key: "value"
+          #            key1: "value1"
+          #          forcedColors: "none"
+          #          geolocation:
+          #            latitude: 12.12
+          #            longitude: 13.13
+          #            accuracy: 1
+          hasTouch: false
+          #          httpCredentials:
+          #            username: "user"
+          #            password: "password"
+          ignoreHTTPSErrors: true
+          isMobile: false
+          javaScriptEnabled: true
+          locale: "en"
+          offline: false
+          #          permissions:
+          #            - permission
+          #            - permission1
+          #          recordHarContent: "embed"
+          #          recordHarMode: "full"
+          #          recordHarOmitContent: false
+          #          recordHarPath: "/home/eugen/Downloads"
+          #          recordHarUrlFilter: "filter"
+          recordVideoDir: "/home/eugen/Downloads"
+          recordVideoSize:
+            width: 1024
+            height: 768
+          #          reducedMotion: "no_preference"
+          screenSize:
+            width: 1024
+            height: 768
+          #          serviceWorkers: "allow"
+          #          storageState: ""
+          #          storageStatePath: "/home/eugen/Downloads"
+          strictSelectors: false
+          #          timezoneId: 1
+          userAgent: "windows"
+          viewportSize:
+            width: 1024
+            height: 768
+pages:
+  common:
+    header:
+      self: //header[@class='page-header']
+      panel:
+        self: ${pages.common.header.self}//div[@class='panel wrapper']
+        links:
+          self: ${pages.common.header.panel.self}//ul[@class='header links']
+          welcomeMessage: ${pages.common.header.panel.links.self}//li[@class='greet welcome']//span
+          signIn: ${pages.common.header.panel.links.self}//li[@class='authorization-link']
+          signUp: ${pages.common.header.panel.links.self}//li//a[text()='Create an Account']
+      content:
+        self: //div[@class='header content']
+        logo: ${pages.common.header.content.self}//a[@class='logo']
+        searchForm:
+          self: ${pages.common.header.content.self}//input[@id='search']
+          searchButton: ${pages.common.header.content.searchForm.self}//button[@class='action search']
+        cart: ${pages.common.header.content.self}//a[@class='action showcart']
 
