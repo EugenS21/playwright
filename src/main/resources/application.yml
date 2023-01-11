@@ -1,0 +1,9 @@
+luma:
+  url: https://magento.softwaretestingboard.com/
+  userInterface:
+    playwright:
+      createOptions:
+        key: "value"
+      browserType: chromium
+
+
