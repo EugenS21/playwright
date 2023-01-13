@@ -6,15 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
-import java.util.Map;
-
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-public class Playwright {
+public class UserInterface {
 
-    Map<String, String> createOptions;
+    Boolean enabled;
     @NestedConfigurationProperty
-    Browser browser;
+    Playwright playwright;
 
 }

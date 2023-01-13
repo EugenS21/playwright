@@ -7,7 +7,9 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
 import org.eugens21.luma.properties.Application;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -15,6 +17,7 @@ import java.util.Map;
 import static lombok.AccessLevel.PRIVATE;
 
 @Component
+@Lazy
 @FieldDefaults(makeFinal = true, level = PRIVATE)
 @RequiredArgsConstructor
 @Slf4j
@@ -24,19 +27,20 @@ public class Instance {
     @NonFinal Playwright playwright;
 
     @Bean
+    @ConditionalOnProperty(prefix = "luma.userInterface", name = "enabled", havingValue = "true")
     public Playwright getPlaywright() {
         Map<String, String> createOptions = applicationProperties.getUserInterface().getPlaywright().getCreateOptions();
         Playwright.CreateOptions options = new Playwright.CreateOptions();
         options.setEnv(createOptions);
         playwright = Playwright.create(options);
-        log.info("Created playwright instance with options: {}", createOptions);
+        log.info("Playwright instance created with options: {}", createOptions);
         return playwright;
     }
 
     @PreDestroy
     public void close() {
         playwright.close();
-        log.info("Playwright closed");
+        log.info("Playwright instance closed");
     }
 
 }
