@@ -18,7 +18,7 @@ luma:
           #          channel: chrome
           #          chromiumSandbox: false
           devTools: false
-          downloadsPath: "/home/eugen/Downloads"
+          downloadsPath: "${user.home}/Downloads"
           #          env:
           #            key: "value"
           #            key1: "value1"
@@ -35,7 +35,7 @@ luma:
           #          proxy: "localhost://my.proxy/server"
           #          slowMo: 2.0
           timeout: 10000
-          tracesDir: "/home/eugen/Downloads"
+          tracesDir: "${user.home}/Downloads"
         contextOptions:
           acceptDownloads: true
           baseUrl: ${luma.url}
@@ -66,9 +66,9 @@ luma:
           #          recordHarContent: "embed"
           #          recordHarMode: "full"
           #          recordHarOmitContent: false
-          #          recordHarPath: "/home/eugen/Downloads"
+          #          recordHarPath: "${user.home}/Downloads"
           #          recordHarUrlFilter: "filter"
-          recordVideoDir: "/home/eugen/Downloads"
+          recordVideoDir: "${user.home}/Downloads"
           recordVideoSize:
             width: 1024
             height: 768
@@ -78,7 +78,7 @@ luma:
             height: 768
           #          serviceWorkers: "allow"
           #          storageState: ""
-          #          storageStatePath: "/home/eugen/Downloads"
+          #          storageStatePath: "${user.home}/Downloads"
           strictSelectors: false
           #          timezoneId: 1
           userAgent: "windows"
