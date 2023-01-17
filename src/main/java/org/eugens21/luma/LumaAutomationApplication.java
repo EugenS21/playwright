@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Lazy;
 @SpringBootApplication(scanBasePackages = "org.eugens21.luma")
 @Lazy
 public class LumaAutomationApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(LumaAutomationApplication.class);
     }

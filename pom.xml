@@ -24,6 +24,8 @@
         <vavr.version>0.10.4</vavr.version>
         <cucumber.version>7.10.1</cucumber.version>
         <model.mapper.version>3.1.1</model.mapper.version>
+        <extent.report.version>5.0.9</extent.report.version>
+        <extent.report.adaptor.version>1.9.2</extent.report.adaptor.version>
     </properties>
 
     <dependencies>
@@ -61,6 +63,18 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extent.report.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>${extent.report.adaptor.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
@@ -79,5 +93,20 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>false</skipTests>
+                    <includes>
+                        <include>**/Runner.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

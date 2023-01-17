@@ -1,6 +1,5 @@
 package org.eugens21.luma.storage;
 
-import io.cucumber.spring.ScenarioScope;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.enums.StorageKey;
@@ -11,7 +10,6 @@ import java.util.Map;
 
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-@ScenarioScope
 public class ScenarioContext {
 
     Map<StorageKey, Object> store;
@@ -26,6 +24,10 @@ public class ScenarioContext {
 
     public <T> T getValue(StorageKey key, Class<T> clazz) {
         return clazz.cast(store.get(key));
+    }
+
+    public boolean containsKey(StorageKey key) {
+        return store.containsKey(key);
     }
 
 }

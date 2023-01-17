@@ -101,6 +101,5 @@ pages:
         logo: ${pages.common.header.content.self}//a[@class='logo']
         searchForm:
           self: ${pages.common.header.content.self}//input[@id='search']
-          searchButton: ${pages.common.header.content.searchForm.self}//button[@class='action search']
-        cart: ${pages.common.header.content.self}//a[@class='action showcart']
-
+          searchButton: ${pages.common.header.content.self}//button[@class='action search']
+        cart: ${pages.common.header.content.self}//a[@class='action showcart']s
