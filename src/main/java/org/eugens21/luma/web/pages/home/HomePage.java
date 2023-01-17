@@ -10,7 +10,7 @@ import org.eugens21.luma.web.pages.AbstractPage;
 public class HomePage extends AbstractPage {
 
     public HomePage(PageLocators pageLocators, Page page) {
-        super(page);
+        super(pageLocators.getCommon(), page);
     }
 
 

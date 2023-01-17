@@ -3,7 +3,9 @@ package org.eugens21.luma.web.service;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
@@ -25,11 +27,12 @@ public class BrowserService {
     ContextOptionsService contextOptionsService;
     LaunchOptionsService launchOptionsService;
     @NonFinal
+    @Getter
     Browser browser;
     @NonFinal
     BrowserContext browserContext;
 
-    public Browser launchBrowser() {
+    private Browser launchBrowser() {
         if (isNull(browser)) {
             browser = browserType.launch(launchOptionsService.getLaunchOptions());
             log.info("Browser launched");
@@ -37,12 +40,18 @@ public class BrowserService {
         return browser;
     }
 
-    public BrowserContext configureBrowserContext() {
+    private BrowserContext configureBrowserContext() {
         if (isNull(browserContext)) {
             browserContext = launchBrowser().newContext(contextOptionsService.getContextOptions());
             log.info("Browser context launched");
         }
         return browserContext;
+    }
+
+    @PostConstruct
+    public void launchAndInitializeContext() {
+        launchBrowser();
+        configureBrowserContext();
     }
 
     @PreDestroy
@@ -51,7 +60,6 @@ public class BrowserService {
         log.info("Browser context closed");
         browser.close();
         log.info("Browser closed");
-
     }
 
 }

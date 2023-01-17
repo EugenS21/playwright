@@ -2,20 +2,20 @@ package org.eugens21.luma.web.pages;
 
 import com.microsoft.playwright.Page;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.experimental.FieldDefaults;
+import org.eugens21.luma.properties.pages.common.CommonPageDetails;
 import org.eugens21.luma.web.pages.common.Header;
-import org.eugens21.luma.web.pages.common.Panel;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@Getter
 public abstract class AbstractPage {
 
     Page page;
-    Panel panel;
     Header header;
 
-    public AbstractPage(Page page) {
+    public AbstractPage(CommonPageDetails commonPageDetails, Page page) {
         this.page = page;
-        this.header = new Header(page);
-        this.panel = new Panel(page);
+        this.header = new Header(page, commonPageDetails);
     }
 }
