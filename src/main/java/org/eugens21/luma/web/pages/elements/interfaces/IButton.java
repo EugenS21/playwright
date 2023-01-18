@@ -4,4 +4,6 @@ public interface IButton extends Element {
 
     void click();
 
+    String getText();
+
 }

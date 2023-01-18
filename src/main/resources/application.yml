@@ -9,6 +9,8 @@ luma:
       #      createOptions:
       #        key: "value"
       browser:
+        width: 1024
+        height: 768
         type: chromium
         launchOptions:
           #          args:
@@ -70,12 +72,12 @@ luma:
           #          recordHarUrlFilter: "filter"
           recordVideoDir: "${user.home}/Downloads"
           recordVideoSize:
-            width: 1024
-            height: 768
+            width: ${luma.userInterface.playwright.browser.width}
+            height: ${luma.userInterface.playwright.browser.height}
           #          reducedMotion: "no_preference"
           screenSize:
-            width: 1024
-            height: 768
+            width: ${luma.userInterface.playwright.browser.width}
+            height: ${luma.userInterface.playwright.browser.height}
           #          serviceWorkers: "allow"
           #          storageState: ""
           #          storageStatePath: "${user.home}/Downloads"
@@ -83,8 +85,8 @@ luma:
           #          timezoneId: 1
           userAgent: "windows"
           viewportSize:
-            width: 1024
-            height: 768
+            width: ${luma.userInterface.playwright.browser.width}
+            height: ${luma.userInterface.playwright.browser.height}
 pages:
   common:
     header:
@@ -102,4 +104,45 @@ pages:
         searchForm:
           self: ${pages.common.header.content.self}//input[@id='search']
           searchButton: ${pages.common.header.content.self}//button[@class='action search']
-        cart: ${pages.common.header.content.self}//a[@class='action showcart']s
+        cart: ${pages.common.header.content.self}//a[@class='action showcart']
+  searchResults:
+    self: //main[@id='maincontent']
+    pageTitle: ${pages.searchResults.self}//h1/span
+    results:
+      self: ${pages.searchResults.self}//div[@class='search results']
+      header:
+        self: ${pages.searchResults.results.self}/div[@class='toolbar toolbar-products'][1]
+      relatedTermsBlock:
+        self: ${pages.searchResults.results.self}//dl[@class='block']
+      content:
+        self: ${pages.searchResults.results.self}/div[contains(@class,'products-grid')]
+        items:
+          self: LISTITEM
+          product:
+            image: IMG
+            name: STRONG
+            productReview:
+              self: //div[contains(@class,'product-reviews-summary')]
+              rating: //div[@class='rating-summary']
+              review: //div[@class='reviews-actions']
+            cost:
+              self: //div[contains(@data-role,'priceBox')]
+              priceLabel: //span[@class='price-label']
+              price: //span[@class='price']
+            availableSizes:
+              self: //div[contains(@attribute-code,'size')]
+              availableSize: //div[contains(@class,'text')]
+            availableColors:
+              self: //div[contains(@attribute-code,'color')]
+              availableColor: //div[contains(@class,'color')]
+            productActions:
+              self: //div[contains(@class,'product actions')]
+              addToCart: BUTTON
+              addToWishList: Add to Wish List
+              addToCompare: Add to Compare
+            productDescription:
+              self: //div[contains(@class,'product-item-description')]
+              learnMore: LINK
+      footer:
+        self: ${pages.searchResults.results.self}/div[@class='toolbar toolbar-products'][2]
+

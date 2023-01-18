@@ -1,44 +1,37 @@
 package org.eugens21.luma.web.pages.elements;
 
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import lombok.AccessLevel;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.web.pages.elements.interfaces.IAnchor;
 
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+import static lombok.AccessLevel.PRIVATE;
+
+@Data
+@FieldDefaults(makeFinal = true, level = PRIVATE)
+@SuppressWarnings("nullpointer")
 public class Anchor implements IAnchor {
 
-    Page page;
-    String locator;
-
-    public Anchor(Page page, String locator) {
-        this.locator = locator;
-        this.page = page;
-    }
-
-    @Override
-    public Locator getSelfLocator() {
-        return page.locator(locator);
-    }
+    Locator locator;
 
     @Override
     public void click() {
-        page.click(locator);
+        locator.click();
     }
 
     @Override
     public boolean isClickable() {
-        return getSelfLocator().isEnabled();
+        return locator.isEnabled();
     }
 
     @Override
     public boolean isDisplayed() {
-        return getSelfLocator().isVisible();
+        return locator.isVisible();
     }
 
     @Override
     public String getText() {
-        return page.locator(locator).innerText();
+        return locator.innerText();
     }
+
 }

@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.eugens21.luma.enums.BrowserTypeEnum;
+import org.eugens21.luma.web.enums.BrowserTypeEnum;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 @NoArgsConstructor

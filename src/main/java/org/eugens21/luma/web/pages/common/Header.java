@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.common.CommonPageDetails;
+import org.eugens21.luma.web.pages.elements.SearchBar;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class Header {
@@ -17,6 +18,11 @@ public class Header {
     public Header(Page page, CommonPageDetails commonPageDetails) {
         headerLinks = new HeaderLinks(page, commonPageDetails.getHeader().getPanel().getLinks());
         headerContent = new HeaderContent(page, commonPageDetails.getHeader().getContent());
+    }
+
+    public void searchForProductWithName(String name) {
+        SearchBar searchBar = headerContent.getSearchBar();
+        searchBar.search(name);
     }
 
 

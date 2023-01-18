@@ -1,11 +1,9 @@
 package org.eugens21.luma.steps;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Response;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.ScenarioScope;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.data_table.model.HeaderLinkProperty;
 import org.eugens21.luma.properties.Application;
@@ -23,11 +21,10 @@ import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 import static org.eugens21.luma.enums.StorageKey.GENERIC;
-import static org.eugens21.luma.enums.StorageKey.PAGE;
+import static org.eugens21.luma.enums.StorageKey.HOME_PAGE;
 import static org.eugens21.luma.hook.GenericHooks.softAssertions;
 
 @FieldDefaults(makeFinal = true, level = PRIVATE)
-@ScenarioScope
 public class HomePageSteps extends CommonUiStep {
 
     @Autowired
@@ -39,8 +36,8 @@ public class HomePageSteps extends CommonUiStep {
     public void userNavigatesToPage() {
         Response homePageResponse = page.navigate(application.getUrl());
         scenarioContext.addValue(GENERIC, homePageResponse);
-        HomePage homePage = new HomePage(pageLocators, page);
-        scenarioContext.addValue(PAGE, homePage);
+        HomePage homePage = new HomePage(page, pageLocators);
+        scenarioContext.addValue(HOME_PAGE, homePage);
     }
 
     @Then("user/he/she is on home page")
@@ -54,7 +51,7 @@ public class HomePageSteps extends CommonUiStep {
 
     @When("user/he/she is investigating the header panel structure")
     public void userIsInvestigatingTheHeaderPanelStructure() {
-        HomePage homePage = scenarioContext.getValue(PAGE, HomePage.class);
+        HomePage homePage = scenarioContext.getValue(HOME_PAGE, HomePage.class);
         HeaderLinks headerLinks = homePage.getHeader().getHeaderLinks();
         scenarioContext.addValue(GENERIC, headerLinks);
     }
@@ -73,21 +70,14 @@ public class HomePageSteps extends CommonUiStep {
                 });
     }
 
-    @Then("he should see the following welcome message: {string}")
+    @Then("user/he/she should see the following welcome message: {string}")
     public void heShouldSeeTheFollowingWelcomeMessage(String welcomeMessage) {
         HeaderLinks headerLinks = scenarioContext.getValue(GENERIC, HeaderLinks.class);
         softAssertions.assertThat(headerLinks)
                 .describedAs("Expecting non null welcome message: <%s>", welcomeMessage)
                 .extracting(HeaderLinks::getWelcomeMessage)
-                .extracting(Span::getSelfLocator)
-                .extracting(Locator::textContent)
+                .extracting(Span::getContent)
                 .isEqualTo(welcomeMessage);
-//        Assertions.assertThat(headerLinks)
-//                .describedAs("Expecting non null welcome message: <%s>", welcomeMessage)
-//                .extracting(HeaderLinks::getWelcomeMessage)
-//                .extracting(Span::getSelfLocator)
-//                .extracting(Locator::textContent)
-//                .isEqualTo("welcomeMessage");
     }
 
 }

@@ -28,13 +28,13 @@ public class HeaderLinks implements Element {
     public HeaderLinks(Page page, PanelLinksDetails panelLinksDetails) {
         this.page = page;
         this.selfLocator = panelLinksDetails.getSelf();
-        this.signIn = new Anchor(page, panelLinksDetails.getSignIn());
-        this.signUp = new Anchor(page, panelLinksDetails.getSignUp());
-        this.welcomeMessage = new Span(page, panelLinksDetails.getWelcomeMessage());
+        this.signIn = new Anchor(page.locator(panelLinksDetails.getSignIn()));
+        this.signUp = new Anchor(page.locator(panelLinksDetails.getSignUp()));
+        this.welcomeMessage = new Span(page.locator(panelLinksDetails.getWelcomeMessage()));
     }
 
     @Override
-    public Locator getSelfLocator() {
+    public Locator getLocator() {
         return page.locator(selfLocator);
     }
 

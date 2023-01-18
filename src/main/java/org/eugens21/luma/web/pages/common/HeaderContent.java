@@ -24,7 +24,7 @@ public class HeaderContent implements Element {
     }
 
     @Override
-    public Locator getSelfLocator() {
+    public Locator getLocator() {
         return page.locator(selfLocator);
     }
 
