@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 import static lombok.AccessLevel.PRIVATE;
 import static org.eugens21.luma.enums.StorageKey.GENERIC_PAGE;
 import static org.eugens21.luma.enums.StorageKey.HOME_PAGE;
-import static org.eugens21.luma.hook.GenericHooks.softAssertions;
 
 @FieldDefaults(makeFinal = true, level = PRIVATE)
 public class SearchResultsSteps extends CommonUiStep {
