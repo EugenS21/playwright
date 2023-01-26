@@ -1,27 +1,26 @@
 package org.eugens21.luma.web.pages.elements;
 
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.web.pages.elements.interfaces.IButton;
 
+import static lombok.AccessLevel.PRIVATE;
+
+@Data
+@FieldDefaults(makeFinal = true, level = PRIVATE)
 public class Button implements IButton {
 
-    Page page;
-    String locator;
-
-    public Button(Page page, String locator) {
-        this.locator = locator;
-        this.page = page;
-    }
-
-    @Override
-    public Locator getSelfLocator() {
-        return page.locator(locator);
-    }
+    Locator locator;
 
     @Override
     public void click() {
-        page.click(locator);
+        locator.click();
+    }
+
+    @Override
+    public String getText() {
+        return locator.textContent();
     }
 
 }

@@ -20,11 +20,11 @@ public class Screenshots {
 
     @AfterStep
     public void doScreenshot(Scenario scenario) {
-//        if (scenario.isFailed()) {
-        Page value = scenarioContext.getValue(BROWSER_PAGE, Page.class);
-        byte[] screenshot = value.screenshot();
-        scenario.attach(screenshot, "image/png", LocalDateTime.now().toString());
-//        }
+        if (scenario.isFailed()) {
+            Page value = scenarioContext.getValue(BROWSER_PAGE, Page.class);
+            byte[] screenshot = value.screenshot();
+            scenario.attach(screenshot, "image/png", LocalDateTime.now().toString());
+        }
     }
 
 }

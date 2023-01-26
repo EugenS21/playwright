@@ -1,25 +1,19 @@
 package org.eugens21.luma.web.pages.elements;
 
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import org.eugens21.luma.web.pages.elements.interfaces.Element;
+import org.eugens21.luma.web.pages.elements.interfaces.ISpan;
 
+@Data
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class Span implements Element {
+public class Span implements ISpan {
 
-    Page page;
-    String locator;
-
-    public Span(Page page, String locator) {
-        this.locator = locator;
-        this.page = page;
-    }
+    Locator locator;
 
     @Override
-    public Locator getSelfLocator() {
-        return page.locator(locator);
+    public String getContent() {
+        return locator.textContent();
     }
-
 }

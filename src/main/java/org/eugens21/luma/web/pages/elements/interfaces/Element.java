@@ -4,6 +4,6 @@ import com.microsoft.playwright.Locator;
 
 public interface Element {
 
-    Locator getSelfLocator();
+    Locator getLocator();
 
 }

@@ -9,9 +9,8 @@ import org.eugens21.luma.web.pages.AbstractPage;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class HomePage extends AbstractPage {
 
-    public HomePage(PageLocators pageLocators, Page page) {
-        super(pageLocators.getCommon(), page);
+    public HomePage(Page page, PageLocators pageLocators) {
+        super(pageLocators, page);
     }
-
 
 }

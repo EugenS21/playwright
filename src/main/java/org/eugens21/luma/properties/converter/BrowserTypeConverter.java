@@ -1,15 +1,14 @@
 package org.eugens21.luma.properties.converter;
 
 
-import io.vavr.API;
-import org.eugens21.luma.enums.BrowserTypeEnum;
+import org.eugens21.luma.web.enums.BrowserTypeEnum;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import static io.vavr.API.*;
-import static org.eugens21.luma.enums.BrowserTypeEnum.CHROMIUM;
-import static org.eugens21.luma.enums.BrowserTypeEnum.FIREFOX;
+import static org.eugens21.luma.web.enums.BrowserTypeEnum.CHROMIUM;
+import static org.eugens21.luma.web.enums.BrowserTypeEnum.FIREFOX;
 
 @Component
 @ConfigurationPropertiesBinding

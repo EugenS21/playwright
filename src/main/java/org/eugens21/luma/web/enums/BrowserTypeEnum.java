@@ -1,8 +1,7 @@
-package org.eugens21.luma.enums;
+package org.eugens21.luma.web.enums;
 
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
