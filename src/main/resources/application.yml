@@ -1,6 +1,12 @@
 spring:
   main:
     lazy-initialization: true
+logging:
+  level:
+    root: INFO
+    org:
+      eugens21:
+        luma: DEBUG
 luma:
   url: https://magento.softwaretestingboard.com/
   userInterface:
@@ -9,8 +15,8 @@ luma:
       #      createOptions:
       #        key: "value"
       browser:
-        width: 1024
-        height: 768
+        width: 1920
+        height: 1040
         type: chromium
         launchOptions:
           #          args:
@@ -130,11 +136,11 @@ pages:
               priceLabel: //span[@class='price-label']
               price: //span[@class='price']
             availableSizes:
-              self: //div[contains(@attribute-code,'size')]
-              availableSize: //div[contains(@class,'text')]
+              self: //div[contains(@class,'swatch-attribute-options') and @aria-label='Size']
+              availableSize: //div[@role='option']
             availableColors:
-              self: //div[contains(@attribute-code,'color')]
-              availableColor: //div[contains(@class,'color')]
+              self: //div[contains(@class,'swatch-attribute-options') and @aria-label='Color']
+              availableColor: //div[@role='option']
             productActions:
               self: //div[contains(@class,'product actions')]
               addToCart: BUTTON
