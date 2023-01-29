@@ -17,7 +17,7 @@ public class AssertionHooks extends CommonSteps {
         super(application, scenarioContext);
     }
 
-    @After(order = 100)
+    @After(order = 1)
     public void doAssertAll() {
         softAssertions.assertAll();
     }

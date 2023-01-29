@@ -3,10 +3,10 @@ package org.eugens21.luma.data_table.model;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
-@Data
+@Getter
 @Builder
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)

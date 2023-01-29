@@ -1,7 +1,6 @@
 package org.eugens21.luma.web.pages;
 
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.LoadState;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
@@ -25,7 +24,6 @@ public abstract class AbstractPage {
 
     public SearchResultsPage searchForProduct(String productName) {
         header.searchForProductWithName(productName);
-        page.waitForLoadState(LoadState.DOMCONTENTLOADED);
         return new SearchResultsPage(page, pageLocators);
     }
 

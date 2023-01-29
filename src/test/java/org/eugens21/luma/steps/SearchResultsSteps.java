@@ -59,8 +59,8 @@ public class SearchResultsSteps extends CommonUiStep {
     @And("user/he/she should see the following products:")
     public void heShouldSeeTheFollowingProducts(List<ProductInfo> products) {
         SearchResultsPage searchResultsPage = scenarioContext.getValue(GENERIC_PAGE, SearchResultsPage.class);
-        List<ProductItemInfo> productItemInfos = searchResultsPage.getFoundProducts();
-        List<ProductInfo> productsFromGrid = productItemInfos.stream()
+        List<ProductItemInfo> productItemInfo = searchResultsPage.getFoundProducts();
+        List<ProductInfo> productsFromGrid = productItemInfo.stream()
                 .map(productInfoMapping::getProductInfo)
                 .collect(Collectors.toList());
         softAssertions.assertThat(productsFromGrid)

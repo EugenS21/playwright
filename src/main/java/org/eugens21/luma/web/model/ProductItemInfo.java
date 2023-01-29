@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.search_results.AvailableColorsDetails;
 import org.eugens21.luma.properties.pages.search_results.AvailableSizesDetails;
 import org.eugens21.luma.properties.pages.search_results.ProductDetails;
+import org.eugens21.luma.web.functional.WaitForState;
 import org.eugens21.luma.web.pages.elements.Anchor;
 import org.eugens21.luma.web.pages.elements.Image;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.microsoft.playwright.options.WaitForSelectorState.ATTACHED;
 import static lombok.AccessLevel.PRIVATE;
 
 @FieldDefaults(makeFinal = true, level = PRIVATE)
@@ -39,8 +41,9 @@ public class ProductItemInfo {
         this.productDescription = new ProductDescription(productItemLocatorInGrid.locator(productDetails.getProductDescription().getSelf()), productDetails.getProductDescription());
     }
 
-    private List<ProductSize> getProductSizes(Locator locator, AvailableSizesDetails productDetails) {
-        Locator siblings = locator.locator(productDetails.getAvailableSize());
+    @WaitForState(ATTACHED)
+    public List<ProductSize> getProductSizes(Locator locator, AvailableSizesDetails sizeDetails) {
+        Locator siblings = locator.locator(sizeDetails.getAvailableSize());
         return Stream.iterate(0, i -> i + 1)
                 .limit(siblings.count())
                 .map(siblings::nth)
@@ -48,8 +51,9 @@ public class ProductItemInfo {
                 .collect(Collectors.toList());
     }
 
-    private List<ProductColor> getProductColors(Locator locator, AvailableColorsDetails productDetails) {
-        Locator siblings = locator.locator(productDetails.getAvailableColor());
+    @WaitForState(ATTACHED)
+    private List<ProductColor> getProductColors(Locator locator, AvailableColorsDetails colorDetails) {
+        Locator siblings = locator.locator(colorDetails.getAvailableColor());
         return Stream.iterate(0, i -> i + 1)
                 .limit(siblings.count())
                 .map(siblings::nth)
