@@ -11,8 +11,9 @@ import org.eugens21.luma.properties.pages.AbstractDetails;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class SearchForm extends AbstractDetails {
+public class SearchFormDetails extends AbstractDetails {
 
     String searchButton;
+    SearchAutoCompleteDetails searchAutoComplete;
 
 }

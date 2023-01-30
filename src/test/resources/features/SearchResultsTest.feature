@@ -17,6 +17,14 @@ Feature: Verify search functionality
   Scenario: Verify search for a valid item
     When user navigates to home page
     Then he is on home page
+    When he is looking to search for 'top'
+    Then he should see the following suggestions:
+      | Suggestion       | Quantity |
+      | Top              | 35       |
+      | tops             | 4        |
+      | tops women       | 6        |
+      | tops and bottoms | 159      |
+      | top blue         | 102      |
 
   Scenario: Verify search for a valid item
     When user navigates to home page

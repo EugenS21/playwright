@@ -9,11 +9,14 @@ import org.eugens21.luma.enums.StorageKey;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @ScenarioScope
+@SuppressWarnings("all")
 public class ScenarioContext {
 
     Map<StorageKey, Object> store;
@@ -31,6 +34,10 @@ public class ScenarioContext {
 
     public <T> T getValue(StorageKey key, Class<T> clazz) {
         return clazz.cast(store.get(key));
+    }
+
+    public <T> List<T> getListValue(StorageKey key, Class<T> clazz){
+        return (List<T>) store.get(key);
     }
 
     public boolean containsKey(StorageKey key) {

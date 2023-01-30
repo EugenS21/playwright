@@ -110,6 +110,12 @@ pages:
         searchForm:
           self: ${pages.common.header.content.self}//input[@id='search']
           searchButton: ${pages.common.header.content.self}//button[@class='action search']
+          searchAutoComplete:
+            self: ${pages.common.header.content.self}//div[contains(@class,'search-autocomplete')]
+            items:
+              self: //ul[@role='listbox']//li
+              optionName: //span[@class='qs-option-name']
+              amount: //span[@class='amount']
         cart: ${pages.common.header.content.self}//a[@class='action showcart']
   searchResults:
     self: //main[@id='maincontent']
