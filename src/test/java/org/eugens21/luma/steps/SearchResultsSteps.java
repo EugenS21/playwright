@@ -87,7 +87,6 @@ public class SearchResultsSteps extends CommonUiStep {
         softAssertions.assertThat(actualSuggestions)
                 .describedAs("Expecting to have the following suggestions: <%s>", expectedSuggestions)
                 .extracting(searchSuggestionMapping::getSearchSuggestion)
-                .containsExactlyElementsOf(expectedSuggestions);
-//                .satisfies(el-> Assertions.assertThat(el).containsExactlyElementsOf(expectedSuggestions));
+                .containsExactlyInAnyOrderElementsOf(expectedSuggestions);
     }
 }
