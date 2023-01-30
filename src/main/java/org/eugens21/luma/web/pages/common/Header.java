@@ -5,7 +5,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.common.CommonPageDetails;
-import org.eugens21.luma.web.pages.elements.SearchBar;
+import org.eugens21.luma.web.model.SearchSuggestion;
+
+import java.util.List;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class Header {
@@ -21,9 +23,11 @@ public class Header {
     }
 
     public void searchForProductWithName(String name) {
-        SearchBar searchBar = headerContent.getSearchBar();
-        searchBar.search(name);
+        headerContent.getSearchForm().searchForProduct(name);
     }
 
+    public List<SearchSuggestion> searchForSuggestions(String keyword) {
+        return headerContent.getSearchForm().searchForSuggestions(keyword);
+    }
 
 }

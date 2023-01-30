@@ -13,7 +13,6 @@ public class ReviewActions {
 
     Anchor reviews;
     Anchor addReview;
-
     public ReviewActions(Locator locator) {
         this.reviews = new Anchor(locator.locator("//a[contains(@class,'view')]"));
         this.addReview = new Anchor(locator.locator("//a[contains(@class,'add')]"));
