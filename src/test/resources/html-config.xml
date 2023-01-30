@@ -3,7 +3,7 @@
     <configuration>
         <!-- report theme -->
         <!-- standard, dark -->
-        <theme>dark</theme>
+        <theme>standard</theme>
 
         <!-- document encoding -->
         <!-- defaults to UTF-8 -->
@@ -14,10 +14,10 @@
         <protocol>https</protocol>
 
         <!-- title of the document -->
-        <documentTitle>HTML Extent</documentTitle>
+        <documentTitle>Luma Automation Framework Extent Report</documentTitle>
 
         <!-- report name - displayed at top-nav -->
-        <reportName>GhChirp Report</reportName>
+        <reportName>Luma Automation Framework Extent Report</reportName>
 
         <!-- view report without internet -->
         <offlineMode>false</offlineMode>
@@ -34,9 +34,17 @@
         <enableTestRunnerLogsView>true</enableTestRunnerLogsView>
 
         <!-- custom javascript -->
-        <js></js>
+        <js>
+            <![CDATA[
+                $(document).ready(function() {
+
+                });
+            ]]>
+        </js>
 
         <!-- custom styles -->
-        <css></css>
+        <css><![CDATA[
+
+			]]></css>
     </configuration>
 </extentreports>
