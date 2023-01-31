@@ -132,7 +132,6 @@
                         <encoding>UTF-8</encoding>
                         <verbose>true</verbose>
                         <privateScope>true</privateScope>
-                        <complianceLevel>16</complianceLevel>
                     </configuration>
                     <executions>
                         <execution>
@@ -157,11 +156,6 @@
                     </dependencies>
                 </plugin>
                 <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.8</version>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
@@ -170,6 +164,7 @@
                         </argLine>
                         <useSystemClassLoader>true</useSystemClassLoader>
                         <skipTests>false</skipTests>
+                        <forkCount>0</forkCount>
                         <includes>
                             <include>**/*Test.java</include>
                         </includes>
@@ -179,10 +174,6 @@
         </pluginManagement>
 
         <plugins>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
