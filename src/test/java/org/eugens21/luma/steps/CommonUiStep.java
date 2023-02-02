@@ -10,6 +10,7 @@ import org.eugens21.luma.web.service.BrowserService;
 
 import static lombok.AccessLevel.PROTECTED;
 import static org.eugens21.luma.enums.StorageKey.BROWSER_PAGE;
+import static org.eugens21.luma.web.factory.PageFactory.init;
 
 @FieldDefaults(makeFinal = true, level = PROTECTED)
 public abstract class CommonUiStep extends CommonSteps {
@@ -28,6 +29,7 @@ public abstract class CommonUiStep extends CommonSteps {
             scenarioContext.addValue(BROWSER_PAGE, page);
         }
         this.pageLocators = pageLocators;
+        init(page, pageLocators);
     }
 
 }
