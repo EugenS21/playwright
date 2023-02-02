@@ -18,13 +18,12 @@ public class SearchSuggestionMapping {
     @Autowired
     public SearchSuggestionMapping(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
-        val typeMap = this.modelMapper.createTypeMap(org.eugens21.luma.web.model.SearchSuggestion.class, SearchSuggestion.class);
-        typeMap.addMapping(e -> e.getOptionName().getContent(), SearchSuggestion::setSuggestion);
-        typeMap.addMappings(mapper -> mapper.using(ctx -> Integer.valueOf(ctx.getSource().toString()))
-                .map(e -> e.getAmount().getContent(), SearchSuggestion::setQuantity));
+        val typeMap = this.modelMapper.createTypeMap(org.eugens21.luma.web.pages.model.search_results.SearchSuggestion.class, SearchSuggestion.class);
+        typeMap.addMapping(e -> e.getSuggestionDetails().getKey(), SearchSuggestion::setSuggestion);
+        typeMap.addMapping(e -> e.getSuggestionDetails().getValue(), SearchSuggestion::setQuantity);
     }
 
-    public SearchSuggestion getSearchSuggestion(org.eugens21.luma.web.model.SearchSuggestion searchSuggestion) {
+    public SearchSuggestion getSearchSuggestion(org.eugens21.luma.web.pages.model.search_results.SearchSuggestion searchSuggestion) {
         return modelMapper.map(searchSuggestion, SearchSuggestion.class);
     }
 

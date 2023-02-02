@@ -50,7 +50,6 @@ public class BrowserService {
 
     @PostConstruct
     public void launchAndInitializeContext() {
-        launchBrowser();
         configureBrowserContext();
     }
 

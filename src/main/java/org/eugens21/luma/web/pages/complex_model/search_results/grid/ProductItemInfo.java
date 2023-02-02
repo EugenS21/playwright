@@ -1,4 +1,4 @@
-package org.eugens21.luma.web.model;
+package org.eugens21.luma.web.pages.complex_model.search_results.grid;
 
 import com.microsoft.playwright.Locator;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import org.eugens21.luma.properties.pages.search_results.ProductDetails;
 import org.eugens21.luma.web.functional.WaitForState;
 import org.eugens21.luma.web.pages.elements.Anchor;
 import org.eugens21.luma.web.pages.elements.Image;
+import org.eugens21.luma.web.pages.model.search_results.*;
 
 import java.util.List;
 import java.util.stream.Collectors;

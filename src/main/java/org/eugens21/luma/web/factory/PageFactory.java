@@ -14,13 +14,13 @@ import static java.util.Arrays.stream;
 import static lombok.AccessLevel.PRIVATE;
 
 @FieldDefaults(makeFinal = true, level = PRIVATE)
-public final class PageFactory {
+public final class PageFactory<T extends AbstractPage> {
 
     static Map<Pages, AbstractPage> pages = new HashMap<>();
 
-    public static AbstractPage get(Pages page) {
+    public static <T> T get(Pages page) {
         if (pages.containsKey(page)) {
-            return pages.get(page);
+            return (T) pages.get(page);
         }
         throw new PageNotFoundException(pages.toString().concat(" does not contain ".concat(page.name())));
     }

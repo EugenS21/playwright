@@ -13,9 +13,9 @@ import org.eugens21.luma.mapping.SearchSuggestionMapping;
 import org.eugens21.luma.properties.Application;
 import org.eugens21.luma.properties.PageLocators;
 import org.eugens21.luma.storage.ScenarioContext;
-import org.eugens21.luma.web.model.ProductItemInfo;
+import org.eugens21.luma.web.pages.complex_model.search_results.grid.ProductItemInfo;
 import org.eugens21.luma.web.pages.home.HomePage;
-import org.eugens21.luma.web.pages.search_results.SearchResultsPage;
+import org.eugens21.luma.web.pages.model.search_results.SearchResultsPage;
 import org.eugens21.luma.web.service.BrowserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -63,7 +63,7 @@ public class SearchResultsSteps extends CommonUiStep {
     @And("user/he/she should see the following products:")
     public void heShouldSeeTheFollowingProducts(List<ProductInfo> products) {
         SearchResultsPage searchResultsPage = scenarioContext.getValue(GENERIC_PAGE, SearchResultsPage.class);
-        List<ProductItemInfo> productItemInfo = searchResultsPage.getFoundProducts();
+        List<ProductItemInfo> productItemInfo = searchResultsPage._do().on().grid().getFoundProducts();
         List<ProductInfo> productsFromGrid = productItemInfo.stream()
                 .map(productInfoMapping::getProductInfo)
                 .collect(Collectors.toList());
@@ -82,11 +82,30 @@ public class SearchResultsSteps extends CommonUiStep {
 
     @Then("user/he/she should see the following suggestions:")
     public void heShouldSeeTheFollowingSuggestions(List<SearchSuggestion> expectedSuggestions) {
-        List<org.eugens21.luma.web.model.SearchSuggestion> actualSuggestions
-                = scenarioContext.getListValue(GENERIC, org.eugens21.luma.web.model.SearchSuggestion.class);
+        List<org.eugens21.luma.web.pages.model.search_results.SearchSuggestion> actualSuggestions
+                = scenarioContext.getListValue(GENERIC, org.eugens21.luma.web.pages.model.search_results.SearchSuggestion.class);
         softAssertions.assertThat(actualSuggestions)
                 .describedAs("Expecting to have the following suggestions: <%s>", expectedSuggestions)
                 .extracting(searchSuggestionMapping::getSearchSuggestion)
                 .containsExactlyInAnyOrderElementsOf(expectedSuggestions);
     }
+
+
+    @When("he is clicking on {string} suggestion")
+    public void heIsClickingOnKeywordSuggestion(String suggestionToClick) {
+        HomePage homePage = scenarioContext.getValue(HOME_PAGE, HomePage.class);
+        SearchResultsPage searchResultsPage = homePage.searchForSuggestion(suggestionToClick);
+        scenarioContext.addValue(GENERIC_PAGE, searchResultsPage);
+    }
+
+    @Then("^he should count '(\\d+)' found products$")
+    public void heShouldCountQuantityFoundProducts(Integer productsOnGrid) {
+        SearchResultsPage searchResultsPage = scenarioContext.getValue(GENERIC_PAGE, SearchResultsPage.class);
+        List<ProductItemInfo> productItemInfo = searchResultsPage._do().on().grid().getFoundProducts();
+        softAssertions.assertThat(productItemInfo)
+                .describedAs("Expecting to found <%d> products", productsOnGrid)
+                .hasSizeGreaterThan(9);
+//                .hasSize(productsOnGrid);
+    }
+
 }

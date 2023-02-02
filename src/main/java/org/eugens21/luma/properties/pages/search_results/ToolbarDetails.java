@@ -11,5 +11,10 @@ import org.eugens21.luma.properties.pages.AbstractDetails;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class HeaderDetails extends AbstractDetails {
+public class ToolbarDetails extends AbstractDetails {
+
+    ViewModesDetails viewModes;
+    AmountDetails amount;
+    SorterDetails sorter;
+
 }

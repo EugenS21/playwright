@@ -2,11 +2,13 @@ package org.eugens21.luma.web.aspect;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Locator.WaitForOptions;
+import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.eugens21.luma.web.functional.WaitForPageState;
 import org.eugens21.luma.web.functional.WaitForState;
 import org.eugens21.luma.web.pages.elements.interfaces.Element;
 
@@ -29,6 +31,12 @@ public class WaitForStateAspect {
             Locator locator = ((Element) joinPoint.getTarget()).getLocator();
             locator.waitFor(waitForCondition(locator, waitForState.value()));
         }
+    }
+
+    @Before("@annotation(waitForPageState)")
+    public void doWaitForState(JoinPoint joinPoint, WaitForPageState waitForPageState) {
+        Page page = ((Element) joinPoint.getTarget()).getLocator().page();
+        page.waitForLoadState(waitForPageState.loadState());
     }
 
     private boolean containsLocatorAsArgument(Object[] args) {

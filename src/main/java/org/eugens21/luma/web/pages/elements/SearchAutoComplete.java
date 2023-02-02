@@ -7,8 +7,8 @@ import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.common.SearchAutoCompleteDetails;
 import org.eugens21.luma.properties.pages.common.SearchAutoCompleteItemDetails;
 import org.eugens21.luma.web.functional.WaitForState;
-import org.eugens21.luma.web.model.SearchSuggestion;
 import org.eugens21.luma.web.pages.elements.interfaces.AutoComplete;
+import org.eugens21.luma.web.pages.model.search_results.SearchSuggestion;
 
 import java.util.List;
 import java.util.stream.Collectors;

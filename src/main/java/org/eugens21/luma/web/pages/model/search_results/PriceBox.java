@@ -1,4 +1,4 @@
-package org.eugens21.luma.web.model;
+package org.eugens21.luma.web.pages.model.search_results;
 
 import com.microsoft.playwright.Locator;
 import lombok.Getter;

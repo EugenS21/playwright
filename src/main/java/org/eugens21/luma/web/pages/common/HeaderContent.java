@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.common.ContentDetails;
-import org.eugens21.luma.web.pages.elements.SearchForm;
+import org.eugens21.luma.web.pages.complex_model.common.SearchForm;
 import org.eugens21.luma.web.pages.elements.interfaces.Element;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
