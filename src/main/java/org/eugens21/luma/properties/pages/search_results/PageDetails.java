@@ -1,21 +1,22 @@
 package org.eugens21.luma.properties.pages.search_results;
 
-import com.microsoft.playwright.options.AriaRole;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.AbstractDetails;
 
-import static lombok.AccessLevel.PRIVATE;
-
 @NoArgsConstructor
-@FieldDefaults(level = PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class SorterOptionDetails extends AbstractDetails {
+public class PageDetails extends AbstractDetails {
 
-    AriaRole option;
-    AriaRole directionSwitcher;
+    String pages;
+    String next;
+    String previous;
+    String current;
+
 
 }

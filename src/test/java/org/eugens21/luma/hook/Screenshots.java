@@ -18,7 +18,7 @@ public class Screenshots {
 
     ScenarioContext scenarioContext;
 
-    @AfterStep
+    @AfterStep(value = "@ui")
     public void doScreenshot(Scenario scenario) {
         if (scenario.isFailed()) {
             Page value = scenarioContext.getValue(BROWSER_PAGE, Page.class);

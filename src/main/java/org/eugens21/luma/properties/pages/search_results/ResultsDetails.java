@@ -20,7 +20,4 @@ public class ResultsDetails extends AbstractDetails {
     RelatedTermsBlockDetails relatedTermsBlock;
     @NestedConfigurationProperty
     ContentDetails content;
-    @NestedConfigurationProperty
-    FooterDetails footer;
-
 }

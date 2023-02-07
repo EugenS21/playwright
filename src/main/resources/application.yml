@@ -123,23 +123,21 @@ pages:
     results:
       self: ${pages.searchResults.self}//div[@class='search results']
       toolbar:
-        self: ${pages.searchResults.results.self}//div[@class='toolbar toolbar-products'][1]
+        self: ${pages.searchResults.results.self}//div[@class='toolbar toolbar-products']
         viewModes:
-          self: ${pages.searchResults.results.toolbar.self}//div[@class='modes']
-          list: ${pages.searchResults.results.toolbar.viewModes.self}//span[text()='List']
-          grid: ${pages.searchResults.results.toolbar.viewModes.self}//span[text()='Grid']
+          self: //div[@class='modes']
+          list: //span[text()='List']
+          grid: //span[text()='Grid']
         amount:
-          self: ${pages.searchResults.results.toolbar.self}//p[@class='toolbar-amount']
+          self: //p[@class='toolbar-amount']
         sorter:
-          self: ${pages.searchResults.results.toolbar.self}//div[contains(@class,'toolbar-sorter')]
-          sorterOptions:
-            self: ${pages.searchResults.results.toolbar.sorter.self}//select[@data-role='sorter']
-            option: OPTION
-            directionSwitcher: LINK
+          self: //div[contains(@class,'toolbar-sorter')]
+          option: //select[@data-role='sorter']
+          directionSwitcher: LINK
       relatedTermsBlock:
         self: ${pages.searchResults.results.self}//dl[@class='block']
       content:
-        self: ${pages.searchResults.results.self}/div[contains(@class,'products-grid')]
+        self: ${pages.searchResults.results.self}/div[contains(@class,'products wrapper')]
         items:
           self: LISTITEM
           product:
@@ -167,6 +165,13 @@ pages:
             productDescription:
               self: //div[contains(@class,'product-item-description')]
               learnMore: LINK
-      footer:
-        self: ${pages.searchResults.results.self}/div[@class='toolbar toolbar-products'][2]
+    footer:
+      self: ${pages.searchResults.results.self}/div[@class='toolbar toolbar-products']
+      pages:
+        self: //ul[@aria-labelledby='paging-label']
+        next: //a[@title='Next']
+        previous: //a[@title='Previous']
+        current: //li[contains(@class,'item current')]//span[not(contains(@class,'label'))]
+        pages: //li[contains(@class,'item') and (not(contains(@class,'pages-item-next') or contains(@class,'pages-item-previous')))]//span[not(contains(@class,'label'))]
+      limiter: //select[@id='limiter']
 

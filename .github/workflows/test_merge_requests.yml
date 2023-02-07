@@ -20,4 +20,4 @@ jobs:
           cache: maven
 
       - name: Test with Maven
-        run: mvn -B clean compile install test -Dluma.userInterface.playwright.browser.launchOptions.headless=true -Dcucumber.options.tags='@ui'
+        run: mvn -fn -B clean install -Dluma.userInterface.playwright.browser.launchOptions.headless=true -Dcucumber.options.tags='@ui'

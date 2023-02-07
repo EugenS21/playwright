@@ -15,7 +15,7 @@ public class Sorter {
     SorterOptions options;
 
     public Sorter(Locator locator, SorterDetails sorter) {
-        this.options = new SorterOptions(locator, sorter.getSorterOptions());
+        this.options = new SorterOptions(locator, sorter);
     }
 
     public void sortBy(SortByEnum sortBy) {

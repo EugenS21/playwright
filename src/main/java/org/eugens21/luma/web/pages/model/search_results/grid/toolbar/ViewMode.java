@@ -6,7 +6,6 @@ import org.eugens21.luma.properties.pages.search_results.ViewModesDetails;
 import org.eugens21.luma.web.pages.elements.Span;
 import org.eugens21.luma.web.pages.enums.ViewModeEnum;
 
-import static io.vavr.API.*;
 import static lombok.AccessLevel.PRIVATE;
 import static org.eugens21.luma.web.pages.enums.ViewModeEnum.LIST;
 
@@ -21,11 +20,12 @@ public class ViewMode {
         this.grid = new Span(locator.locator(viewModesDetails.getGrid()));
     }
 
-    public Span switchToView(ViewModeEnum viewMode) {
-        return Match(viewMode).of(
-                Case($(LIST), () -> list),
-                Case($(), () -> grid)
-        );
+    public void switchToView(ViewModeEnum viewMode) {
+        if (viewMode.equals(LIST)) {
+            list.click();
+            return;
+        }
+        grid.click();
     }
 
 }

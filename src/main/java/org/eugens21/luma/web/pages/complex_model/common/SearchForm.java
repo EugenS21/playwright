@@ -17,7 +17,7 @@ import org.eugens21.luma.web.pages.model.search_results.SearchSuggestion;
 import java.util.List;
 
 import static java.lang.String.format;
-import static org.eugens21.luma.web.factory.Pages.SEARCH_PAGE;
+import static org.eugens21.luma.web.factory.Pages.SEARCH_RESULTS_PAGE;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class SearchForm extends AbstractElement implements AutoCompleteForm<SearchAutoComplete> {
@@ -44,7 +44,7 @@ public class SearchForm extends AbstractElement implements AutoCompleteForm<Sear
 
     public SearchResultsPage search() {
         search.click();
-        return PageFactory.get(SEARCH_PAGE);
+        return PageFactory.get(SEARCH_RESULTS_PAGE);
     }
 
     public SearchResultsPage searchForProduct(String productName) {
