@@ -122,8 +122,20 @@ pages:
     pageTitle: ${pages.searchResults.self}//h1/span
     results:
       self: ${pages.searchResults.self}//div[@class='search results']
-      header:
-        self: ${pages.searchResults.results.self}/div[@class='toolbar toolbar-products'][1]
+      toolbar:
+        self: ${pages.searchResults.results.self}//div[@class='toolbar toolbar-products'][1]
+        viewModes:
+          self: ${pages.searchResults.results.toolbar.self}//div[@class='modes']
+          list: ${pages.searchResults.results.toolbar.viewModes.self}//span[text()='List']
+          grid: ${pages.searchResults.results.toolbar.viewModes.self}//span[text()='Grid']
+        amount:
+          self: ${pages.searchResults.results.toolbar.self}//p[@class='toolbar-amount']
+        sorter:
+          self: ${pages.searchResults.results.toolbar.self}//div[contains(@class,'toolbar-sorter')]
+          sorterOptions:
+            self: ${pages.searchResults.results.toolbar.sorter.self}//select[@data-role='sorter']
+            option: OPTION
+            directionSwitcher: LINK
       relatedTermsBlock:
         self: ${pages.searchResults.results.self}//dl[@class='block']
       content:

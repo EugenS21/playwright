@@ -3,25 +3,18 @@ package org.eugens21.luma.web.pages.elements;
 import com.microsoft.playwright.Locator;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-import org.eugens21.luma.web.pages.elements.interfaces.IDiv;
+import org.eugens21.luma.web.pages.elements.interfaces.IParagraph;
 
 import static lombok.AccessLevel.PRIVATE;
 
 @Data
 @FieldDefaults(makeFinal = true, level = PRIVATE)
-public class Div implements IDiv {
+public class Paragraph implements IParagraph {
 
     Locator locator;
 
     @Override
-    public String getAttribute(String attribute) {
-        return locator.getAttribute(attribute);
+    public String getContent() {
+        return locator.innerText();
     }
-
-    @Override
-    public String getText() {
-        return locator.textContent();
-    }
-
-
 }

@@ -5,7 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.common.CommonPageDetails;
-import org.eugens21.luma.web.model.SearchSuggestion;
+import org.eugens21.luma.web.pages.model.search_results.SearchResultsPage;
+import org.eugens21.luma.web.pages.model.search_results.SearchSuggestion;
 
 import java.util.List;
 
@@ -22,8 +23,12 @@ public class Header {
         headerContent = new HeaderContent(page, commonPageDetails.getHeader().getContent());
     }
 
-    public void searchForProductWithName(String name) {
-        headerContent.getSearchForm().searchForProduct(name);
+    public SearchResultsPage searchForProductWithName(String name) {
+        return headerContent.getSearchForm().searchForProduct(name);
+    }
+
+    public SearchResultsPage searchForSuggestion(String name) {
+        return headerContent.getSearchForm().chooseSuggestion(name);
     }
 
     public List<SearchSuggestion> searchForSuggestions(String keyword) {

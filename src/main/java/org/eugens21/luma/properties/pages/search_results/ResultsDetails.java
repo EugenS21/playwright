@@ -15,7 +15,7 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 public class ResultsDetails extends AbstractDetails {
 
     @NestedConfigurationProperty
-    HeaderDetails header;
+    ToolbarDetails toolbar;
     @NestedConfigurationProperty
     RelatedTermsBlockDetails relatedTermsBlock;
     @NestedConfigurationProperty

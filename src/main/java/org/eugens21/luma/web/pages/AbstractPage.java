@@ -5,15 +5,16 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.PageLocators;
-import org.eugens21.luma.web.model.SearchSuggestion;
+import org.eugens21.luma.web.pages.actions.PageActions;
 import org.eugens21.luma.web.pages.common.Header;
-import org.eugens21.luma.web.pages.search_results.SearchResultsPage;
+import org.eugens21.luma.web.pages.model.search_results.SearchResultsPage;
+import org.eugens21.luma.web.pages.model.search_results.SearchSuggestion;
 
 import java.util.List;
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @Getter
-public abstract class AbstractPage {
+public abstract class AbstractPage implements org.eugens21.luma.web.pages.Page {
 
     Page page;
     Header header;
@@ -26,12 +27,19 @@ public abstract class AbstractPage {
     }
 
     public SearchResultsPage searchForProduct(String productName) {
-        header.searchForProductWithName(productName);
-        return new SearchResultsPage(page, pageLocators);
+        return header.searchForProductWithName(productName);
+    }
+
+    public SearchResultsPage searchForSuggestion(String productName) {
+        return header.searchForSuggestion(productName);
     }
 
     public List<SearchSuggestion> lookingForSuggestions(String productName) {
         return header.searchForSuggestions(productName);
     }
 
+    @Override
+    public PageActions _do() {
+        return null;
+    }
 }

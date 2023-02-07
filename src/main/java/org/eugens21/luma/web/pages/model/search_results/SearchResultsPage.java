@@ -1,13 +1,12 @@
-package org.eugens21.luma.web.pages.search_results;
+package org.eugens21.luma.web.pages.model.search_results;
 
 import com.microsoft.playwright.Page;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
 import org.eugens21.luma.properties.PageLocators;
-import org.eugens21.luma.web.model.ProductItemInfo;
 import org.eugens21.luma.web.pages.PageWithBreadCrumbs;
-
-import java.util.List;
+import org.eugens21.luma.web.pages.actions.SearchResultsActions;
+import org.eugens21.luma.web.pages.complex_model.search_results.grid.SearchResults;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -26,8 +25,9 @@ public class SearchResultsPage extends PageWithBreadCrumbs {
         return searchResults.getPageTitle().getContent();
     }
 
-    public List<ProductItemInfo> getFoundProducts() {
-        return searchResults.getFoundProductsGrid().getElements();
+    @Override
+    public SearchResultsActions _do() {
+        return new SearchResultsActions(searchResults);
     }
 
 }
