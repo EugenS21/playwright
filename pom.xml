@@ -21,12 +21,11 @@
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <playwright.version>1.28.1</playwright.version>
-        <test-ng.version>7.7.0</test-ng.version>
+        <test-ng.version>7.7.1</test-ng.version>
         <vavr.version>0.10.4</vavr.version>
         <cucumber.version>7.10.1</cucumber.version>
         <model.mapper.version>3.1.1</model.mapper.version>
-        <extent.report.version>5.0.9</extent.report.version>
-        <extent.report.adaptor.version>1.9.2</extent.report.adaptor.version>
+        <allure.version>2.21.0</allure.version>
         <apache.commons.version>3.12.0</apache.commons.version>
         <aspectj.version>1.9.19</aspectj.version>
     </properties>
@@ -77,16 +76,15 @@
             <version>${apache.commons.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.aventstack</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>${extent.report.version}</version>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>tech.grasshopper</groupId>
-            <artifactId>extentreports-cucumber7-adapter</artifactId>
-            <version>${extent.report.adaptor.version}</version>
-            <scope>test</scope>
+            <groupId>io.cucumber</groupId>
+            <artifactId>gherkin</artifactId>
+            <version>26.0.3</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -169,6 +167,20 @@
                         </includes>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>io.qameta.allure</groupId>
+                    <artifactId>allure-maven</artifactId>
+                    <version>2.12.0</version>
+                    <configuration>
+                        <reportVersion>${allure.version}</reportVersion>
+                        <reportDirectory>${project.basedir}/target/test-output/allure-results</reportDirectory>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>4.0.0-M4</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -181,7 +193,39 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.4.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>licenses</report>
+                            <report>dependency-info</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
