@@ -5,7 +5,6 @@ import com.microsoft.playwright.Page;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.search_results.RelatedTermsBlockDetails;
 import org.eugens21.luma.web.pages.elements.interfaces.IDescritionList;
-import org.eugens21.luma.web.pages.elements.interfaces.List;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -26,7 +25,7 @@ public class DescriptionList implements IDescritionList {
     }
 
     @Override
-    public List getItems() {
+    public java.util.List getItems() {
         return null;
     }
 }

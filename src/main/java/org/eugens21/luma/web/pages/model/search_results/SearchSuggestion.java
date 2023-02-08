@@ -8,7 +8,7 @@ import org.eugens21.luma.web.pages.elements.Span;
 
 import static lombok.AccessLevel.PRIVATE;
 import static org.eugens21.luma.web.factory.PageFactory.get;
-import static org.eugens21.luma.web.factory.Pages.SEARCH_PAGE;
+import static org.eugens21.luma.web.factory.Pages.SEARCH_RESULTS_PAGE;
 
 @FieldDefaults(makeFinal = true, level = PRIVATE)
 public class SearchSuggestion {
@@ -31,7 +31,7 @@ public class SearchSuggestion {
 
     public SearchResultsPage click() {
         optionName.click();
-        return get(SEARCH_PAGE);
+        return get(SEARCH_RESULTS_PAGE);
     }
 
 }

@@ -28,7 +28,7 @@
         <extent.report.version>5.0.9</extent.report.version>
         <extent.report.adaptor.version>1.9.2</extent.report.adaptor.version>
         <apache.commons.version>3.12.0</apache.commons.version>
-        <aspectj.version>1.9.7</aspectj.version>
+        <aspectj.version>1.9.19</aspectj.version>
     </properties>
 
     <dependencies>
@@ -163,7 +163,6 @@
                             -javaagent:"${settings.localRepository}"/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                         </argLine>
                         <useSystemClassLoader>true</useSystemClassLoader>
-                        <skipTests>false</skipTests>
                         <forkCount>0</forkCount>
                         <includes>
                             <include>**/*Test.java</include>

@@ -17,5 +17,7 @@ public class SearchResultsDetails extends AbstractDetails {
     String pageTitle;
     @NestedConfigurationProperty
     ResultsDetails results;
+    @NestedConfigurationProperty
+    FooterDetails footer;
 
 }

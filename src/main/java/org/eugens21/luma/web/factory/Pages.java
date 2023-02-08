@@ -7,6 +7,8 @@ import org.eugens21.luma.web.pages.AbstractPage;
 import org.eugens21.luma.web.pages.home.HomePage;
 import org.eugens21.luma.web.pages.model.search_results.SearchResultsPage;
 
+import java.util.function.Supplier;
+
 import static lombok.AccessLevel.PRIVATE;
 
 @FieldDefaults(makeFinal = true, level = PRIVATE)
@@ -14,17 +16,17 @@ public enum Pages {
 
     HOME_PAGE {
         @Override
-        public AbstractPage get(Page page, PageLocators pageLocators) {
-            return new HomePage(page, pageLocators);
+        public <T extends AbstractPage> Supplier<T> get(Page page, PageLocators pageLocators) {
+            return () -> (T) new HomePage(page, pageLocators);
         }
     },
-    SEARCH_PAGE {
+    SEARCH_RESULTS_PAGE {
         @Override
-        public AbstractPage get(Page page, PageLocators pageLocators) {
-            return new SearchResultsPage(page, pageLocators);
+        public <T extends AbstractPage> Supplier<T> get(Page page, PageLocators pageLocators) {
+            return () -> (T) new SearchResultsPage(page, pageLocators);
         }
     };
 
-    public abstract AbstractPage get(Page page, PageLocators pageLocators);
+    public abstract <T extends AbstractPage> Supplier<T> get(Page page, PageLocators pageLocators);
 
 }

@@ -7,6 +7,7 @@ public enum StorageKey {
     BROWSER_PAGE,
     GENERIC,
     GENERIC_PAGE,
-    HOME_PAGE
+    HOME_PAGE,
+    LIST_KEY
 
 }

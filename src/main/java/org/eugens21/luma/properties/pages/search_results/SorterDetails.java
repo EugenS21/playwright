@@ -1,5 +1,6 @@
 package org.eugens21.luma.properties.pages.search_results;
 
+import com.microsoft.playwright.options.AriaRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 public class SorterDetails extends AbstractDetails {
 
-    SorterOptionDetails sorterOptions;
+    String option;
+    AriaRole directionSwitcher;
 
 }

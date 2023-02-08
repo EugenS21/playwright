@@ -13,7 +13,7 @@ public class SearchResultsActions implements PageActions {
     ProductGridActions grid;
 
     public SearchResultsActions(SearchResults searchResults) {
-        this.footerToolbarActions = new FooterToolbarActions();
+        this.footerToolbarActions = new FooterToolbarActions(searchResults.getPaginationToolbar());
         this.headerToolbarActions = new HeaderToolbarActions(searchResults.getSearchResultsToolbar());
         this.grid = new ProductGridActions(searchResults.getFoundProductsGrid());
     }

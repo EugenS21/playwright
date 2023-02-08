@@ -48,6 +48,7 @@ public class ProductItemInfo {
         return Stream.iterate(0, i -> i + 1)
                 .limit(siblings.count())
                 .map(siblings::nth)
+//                .peek(Locator::scrollIntoViewIfNeeded)
                 .map(ProductSize::new)
                 .collect(Collectors.toList());
     }
@@ -58,6 +59,7 @@ public class ProductItemInfo {
         return Stream.iterate(0, i -> i + 1)
                 .limit(siblings.count())
                 .map(siblings::nth)
+//                .peek(Locator::scrollIntoViewIfNeeded)
                 .map(ProductColor::new)
                 .collect(Collectors.toList());
     }

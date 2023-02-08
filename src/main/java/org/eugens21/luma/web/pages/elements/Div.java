@@ -23,5 +23,9 @@ public class Div implements IDiv {
         return locator.textContent();
     }
 
+    @Override
+    public String toString() {
+        return getText();
+    }
 
 }
