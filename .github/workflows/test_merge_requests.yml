@@ -59,4 +59,4 @@ jobs:
           context: 'Test report'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha }}
-          target_url: https://eugens21.github.io/playwright/${{ github.run_number }}
+          target_url: https://eugens21.github.io/playwright/${{ github.run_number }}/index.html
