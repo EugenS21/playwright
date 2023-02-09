@@ -167,20 +167,6 @@
                         </includes>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>io.qameta.allure</groupId>
-                    <artifactId>allure-maven</artifactId>
-                    <version>2.12.0</version>
-                    <configuration>
-                        <reportVersion>${allure.version}</reportVersion>
-                        <reportDirectory>${project.basedir}/target/test-output/allure-results</reportDirectory>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>4.0.0-M4</version>
-                </plugin>
             </plugins>
         </pluginManagement>
 
