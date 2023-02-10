@@ -18,5 +18,4 @@ public class PageDetails extends AbstractDetails {
     String previous;
     String current;
 
-
 }

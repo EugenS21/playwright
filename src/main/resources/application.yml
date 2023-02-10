@@ -15,8 +15,8 @@ luma:
       #      createOptions:
       #        key: "value"
       browser:
-        width: 1920
-        height: 1040
+        width: 2560
+        height: 1440
         type: chromium
         launchOptions:
           #          args:
@@ -34,7 +34,7 @@ luma:
           #          firefoxUserPrefs:
           #            key: "value"
           #            key1: "value1"
-          headless: false
+          headless: true
           #          ignoreAllDefaultArgs: false
           #          ignoreDefaultArgs:
           #            - arg1
@@ -95,8 +95,9 @@ luma:
             height: ${luma.userInterface.playwright.browser.height}
 pages:
   common:
+    self: //div[@class='page-wrapper']
     header:
-      self: //header[@class='page-header']
+      self: ${pages.common.self}//header[@class='page-header']
       panel:
         self: ${pages.common.header.self}//div[@class='panel wrapper']
         links:
@@ -117,11 +118,23 @@ pages:
               optionName: //span[@class='qs-option-name']
               amount: //span[@class='amount']
         cart: ${pages.common.header.content.self}//a[@class='action showcart']
+      navigation:
+        self: NAVIGATION
+        items:
+          self: LISTITEM
+          menu:
+            self: MENUITEM
+            subMenu1:
+              self: LISTITEM
+              item: LISTITEM
+            subMenu2:
+              self: LISTITEM
+              item: LISTITEM
   searchResults:
     self: //main[@id='maincontent']
     pageTitle: ${pages.searchResults.self}//h1/span
     results:
-      self: ${pages.searchResults.self}//div[@class='search results']
+      self: ${pages.searchResults.self}//div[@class='column main']
       toolbar:
         self: ${pages.searchResults.results.self}//div[@class='toolbar toolbar-products']
         viewModes:

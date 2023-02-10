@@ -6,7 +6,11 @@ import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.search_results.ResultsDetails;
 import org.eugens21.luma.properties.pages.search_results.SearchResultsDetails;
-import org.eugens21.luma.web.pages.elements.*;
+import org.eugens21.luma.web.pages.complex_model.common.Pagination;
+import org.eugens21.luma.web.pages.elements.DescriptionList;
+import org.eugens21.luma.web.pages.elements.FoundProductsGrid;
+import org.eugens21.luma.web.pages.elements.SearchResultsToolbar;
+import org.eugens21.luma.web.pages.elements.Span;
 import org.eugens21.luma.web.pages.elements.interfaces.Element;
 
 import static lombok.AccessLevel.PRIVATE;

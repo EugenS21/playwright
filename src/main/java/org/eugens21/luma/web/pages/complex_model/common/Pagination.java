@@ -1,4 +1,4 @@
-package org.eugens21.luma.web.pages.elements;
+package org.eugens21.luma.web.pages.complex_model.common;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.pages.search_results.PageDetails;
 import org.eugens21.luma.web.functional.ScrollTo;
+import org.eugens21.luma.web.pages.elements.Anchor;
+import org.eugens21.luma.web.pages.elements.Span;
 import org.eugens21.luma.web.pages.elements.interfaces.IPagination;
 
 import java.util.List;

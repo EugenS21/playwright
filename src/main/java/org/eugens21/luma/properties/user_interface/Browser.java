@@ -13,6 +13,8 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 public class Browser {
 
     BrowserTypeEnum type;
+    Integer width;
+    Integer height;
     @NestedConfigurationProperty
     LaunchOptions launchOptions;
     @NestedConfigurationProperty

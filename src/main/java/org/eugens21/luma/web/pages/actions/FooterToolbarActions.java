@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.web.factory.PageFactory;
 import org.eugens21.luma.web.factory.Pages;
-import org.eugens21.luma.web.pages.elements.Pagination;
+import org.eugens21.luma.web.pages.complex_model.common.Pagination;
 import org.eugens21.luma.web.pages.model.search_results.SearchResultsPage;
 
 import java.util.List;
