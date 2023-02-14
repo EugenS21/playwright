@@ -9,6 +9,7 @@ import org.eugens21.luma.data_table.model.HeaderLinkProperty;
 import org.eugens21.luma.properties.Application;
 import org.eugens21.luma.properties.PageLocators;
 import org.eugens21.luma.storage.ScenarioContext;
+import org.eugens21.luma.web.functional.Attachment;
 import org.eugens21.luma.web.pages.common.HeaderLinks;
 import org.eugens21.luma.web.pages.elements.Span;
 import org.eugens21.luma.web.pages.elements.interfaces.IAnchor;
@@ -23,6 +24,7 @@ import static lombok.AccessLevel.PRIVATE;
 import static org.eugens21.luma.enums.StorageKey.GENERIC;
 import static org.eugens21.luma.enums.StorageKey.HOME_PAGE;
 
+@Attachment
 @FieldDefaults(makeFinal = true, level = PRIVATE)
 public class HomePageSteps extends CommonUiStep {
 

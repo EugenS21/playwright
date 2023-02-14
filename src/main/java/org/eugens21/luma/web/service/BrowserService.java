@@ -3,6 +3,7 @@ package org.eugens21.luma.web.service;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
+import org.eugens21.luma.properties.Application;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,8 @@ public class BrowserService {
     Browser browser;
     @NonFinal
     BrowserContext browserContext;
+    Application application;
+
 
     private Browser launchBrowser() {
         if (isNull(browser)) {
@@ -46,6 +50,13 @@ public class BrowserService {
             log.info("Browser context launched");
         }
         return browserContext;
+    }
+
+    public Page getPage() {
+        var browserProperties = application.getUserInterface().getPlaywright().getBrowser();
+        Page page = browser.newPage();
+        page.setViewportSize(browserProperties.getWidth(), browserProperties.getHeight());
+        return page;
     }
 
     @PostConstruct

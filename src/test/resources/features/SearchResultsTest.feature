@@ -5,6 +5,16 @@ Feature: Verify search functionality
     Given user navigates to home page
     And he is on home page
 
+  Scenario Outline: Verify search for a valid item
+    When he is looking to search for 'top'
+    And he is clicking on '<Keyword>' suggestion
+    Then he should see the title 'Search results for: \'<Keyword>\''
+    And he should count '<Quantity>' found products
+
+    Examples:
+      | Keyword | Quantity |
+      | Top     | 35       |
+
   Scenario: Verify search for an item LIST view
     When he search for a product with name 'shirt'
     Then he should see the title 'Search results for: \'shirt\''
@@ -28,30 +38,17 @@ Feature: Verify search functionality
       | Gobi HeatTec® Tee         | $29.00 | XS,S,M,L,XL | Black,Orange,Red   |
       | Proteus Fitness Jackshirt | $45.00 | XS,S,M,L,XL | Black,Blue,Orange  |
 
-#  Scenario: Verify search form auto complete
-#    When he is looking to search for 'Hoodie'
-#    Then he should see the following suggestions:
-#      | Suggestion       | Quantity |
-#      | Hoodie           | 20       |
-#      | Top              | 35       |
-#      | tops             | 4        |
-#      | tops women       | 6        |
-#      | tops and bottoms | 159      |
-#      | top blue         | 102      |
-#
-#  Scenario Outline: Verify search for a valid item
-#    When he is looking to search for 'top'
-#    And he is clicking on '<Keyword>' suggestion
-#    Then he should see the title 'Search results for: \'<Keyword>\''
-#    And he should count '<Quantity>' found products
-#
-#    Examples:
-#      | Keyword          | Quantity |
-#      | Top              | 35       |
-#      | tops             | 4        |
-#      | tops women       | 6        |
-#      | tops and bottoms | 159      |
-#      | top blue         | 102      |
+  Scenario: Verify search form auto complete
+    When he is looking to search for 'Hoodie'
+    Then he should see the following suggestions:
+      | Suggestion       | Quantity |
+      | Hoodie           | 20       |
+      | Top              | 35       |
+      | tops             | 4        |
+      | tops women       | 6        |
+      | tops and bottoms | 159      |
+      | top blue         | 102      |
+
 
   Scenario: Verify items on the page
     When he search for a product with name 'shirt'

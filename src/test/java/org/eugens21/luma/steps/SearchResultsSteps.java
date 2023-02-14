@@ -1,11 +1,11 @@
 package org.eugens21.luma.steps;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
+import org.eugens21.luma.data_table.model.MenuPath;
 import org.eugens21.luma.data_table.model.ProductInfo;
 import org.eugens21.luma.data_table.model.SearchSuggestion;
 import org.eugens21.luma.enums.PageNavigationEnum;
@@ -14,6 +14,7 @@ import org.eugens21.luma.mapping.SearchSuggestionMapping;
 import org.eugens21.luma.properties.Application;
 import org.eugens21.luma.properties.PageLocators;
 import org.eugens21.luma.storage.ScenarioContext;
+import org.eugens21.luma.web.functional.Attachment;
 import org.eugens21.luma.web.pages.complex_model.search_results.grid.ProductItemInfo;
 import org.eugens21.luma.web.pages.enums.SortByEnum;
 import org.eugens21.luma.web.pages.enums.SortEnum;
@@ -28,6 +29,7 @@ import java.util.List;
 import static lombok.AccessLevel.PRIVATE;
 import static org.eugens21.luma.enums.StorageKey.*;
 
+@Attachment
 @FieldDefaults(makeFinal = true, level = PRIVATE)
 public class SearchResultsSteps extends CommonUiStep {
 
@@ -53,6 +55,13 @@ public class SearchResultsSteps extends CommonUiStep {
         scenarioContext.addValue(GENERIC_PAGE, searchResultsPage);
     }
 
+    @When("user/he/she choose to navigate to the following path '{menuPath}'")
+    public void userChoosingMenu(MenuPath menuToVisit) {
+        HomePage homePage = scenarioContext.getValue(HOME_PAGE, HomePage.class);
+        SearchResultsPage searchResultsPage = homePage.navigateToMenu(menuToVisit.getMainMenu(), menuToVisit.getPathToVisit());
+        scenarioContext.addValue(GENERIC_PAGE, searchResultsPage);
+    }
+
     @SneakyThrows
     @Then("user/he/she should see the title {string}")
     public void heShouldSeeTheTitleSearchResultsForShirt(String title) {
@@ -63,7 +72,7 @@ public class SearchResultsSteps extends CommonUiStep {
                 .isEqualTo(title);
     }
 
-    @And("user/he/she should see the following products:")
+    @Then("user/he/she should see the following products:")
     public void heShouldSeeTheFollowingProducts(List<ProductInfo> products) {
         SearchResultsPage searchResultsPage = scenarioContext.getValue(GENERIC_PAGE, SearchResultsPage.class);
         List<ProductItemInfo> productItemInfo = searchResultsPage._do().on().grid().getFoundProducts();

@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import org.eugens21.luma.properties.PageLocators;
 import org.eugens21.luma.web.pages.actions.PageActions;
 import org.eugens21.luma.web.pages.common.Header;
+import org.eugens21.luma.web.pages.enums.NavigationMenuEnum;
 import org.eugens21.luma.web.pages.model.search_results.SearchResultsPage;
 import org.eugens21.luma.web.pages.model.search_results.SearchSuggestion;
 
@@ -38,8 +39,13 @@ public abstract class AbstractPage implements org.eugens21.luma.web.pages.Page {
         return header.searchForSuggestions(productName);
     }
 
+    public SearchResultsPage navigateToMenu(NavigationMenuEnum menu, String... pathToVisit) {
+        return header.navigateToMenu(menu, pathToVisit);
+    }
+
     @Override
     public PageActions _do() {
         return null;
     }
+
 }
