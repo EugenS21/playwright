@@ -1,1 +1,0 @@
-{"total":2,"items":[{"uid":"338ad8fb3bf5a1487e25452d18cd0649","name":"Verify search functionality","statistic":{"failed":0,"broken":2,"skipped":0,"passed":7,"unknown":0,"total":9}},{"uid":"9f2cc944d72fc2a243e31557e2c34994","name":"Verify the structure of the header","statistic":{"failed":0,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":2}}]}
