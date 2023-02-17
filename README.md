@@ -14,7 +14,7 @@ run against real browsers, including Chrome 🌐, Firefox 🌐, and Safari 🌐,
 * AspectJ 🔧
 * TestNG 🧪
 * Cucumber 🥒
-* ExtentReport 📊
+* Allure Report 📊
 * RestAssured 💻
 
 ## How to play 🎮
@@ -22,10 +22,11 @@ run against real browsers, including Chrome 🌐, Firefox 🌐, and Safari 🌐,
 1. Clone the repository by running git clone https://github.com/EugenS21/playwright.git
 2. Navigate to the cloned repository cd playwright
 3. Run **mvn -B clean compile install test**
-4. To get the report of execution open **playwright/target/test-output/reports/report <date>/Index.html**
+4. To get the report of execution you need to run from the root path of the project: ``mvn allure:serve`` this command
+   will automatically start a local server with the results.
 
 PS: You can run different categories of test by specifying a tag: **mvn -B clean compile install test
--Dcucumber.options.tags='@tag'**
+-Dcucumber.filter.tags='@tag'**
 
 ## Documentation 📚
 

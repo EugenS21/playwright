@@ -41,14 +41,13 @@ Feature: Verify search functionality
   Scenario: Verify search form auto complete
     When he is looking to search for 'Hoodie'
     Then he should see the following suggestions:
-      | Suggestion       | Quantity |
-      | Hoodie           | 20       |
-      | Top              | 35       |
-      | tops             | 4        |
-      | tops women       | 6        |
-      | tops and bottoms | 159      |
-      | top blue         | 102      |
-
+      | Suggestion         | Quantity |
+      | Hoodie             | 20       |
+      | hoodie color black | 86       |
+      | hoodie bag red     | 7        |
+      | hoodie@            | 20       |
+      | hoodie jacket      | 41       |
+      | hoodies for women  | 12       |
 
   Scenario: Verify items on the page
     When he search for a product with name 'shirt'
