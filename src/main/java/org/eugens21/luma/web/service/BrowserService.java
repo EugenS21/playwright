@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
-import org.eugens21.luma.properties.Application;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +31,8 @@ public class BrowserService {
     @Getter
     Browser browser;
     @NonFinal
+    @Getter
     BrowserContext browserContext;
-    Application application;
 
 
     private Browser launchBrowser() {
@@ -53,10 +52,7 @@ public class BrowserService {
     }
 
     public Page getPage() {
-        var browserProperties = application.getUserInterface().getPlaywright().getBrowser();
-        Page page = browser.newPage();
-        page.setViewportSize(browserProperties.getWidth(), browserProperties.getHeight());
-        return page;
+        return browserContext.newPage();
     }
 
     @PostConstruct

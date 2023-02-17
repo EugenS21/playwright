@@ -1,5 +1,6 @@
 package org.eugens21.luma.web.aspect;
 
+import com.microsoft.playwright.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -29,8 +30,8 @@ public class AttachmentAspect {
 
     @After("methodExecution() && (hasAttachmentAnnotation() || hasAttachmentClassAnnotation())")
     public void attachScreenshot(JoinPoint joinPoint) {
-        byte[] screenshot = ((UiStep) joinPoint.getTarget()).getPage().screenshot();
-        getLifecycle().addAttachment("Attachment ".concat(LocalDateTime.now().toString()),
+        byte[] screenshot = ((UiStep) joinPoint.getTarget()).getPage().screenshot(new Page.ScreenshotOptions().setFullPage(true));
+        getLifecycle().addAttachment("Screenshot ".concat(LocalDateTime.now().toString()),
                 "image/png",
                 "png",
                 screenshot

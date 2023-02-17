@@ -16,25 +16,25 @@
     <description>Demo project with Playwright using Java</description>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <aspectj.java.version>16</aspectj.java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <playwright.version>1.28.1</playwright.version>
-        <test-ng.version>7.7.1</test-ng.version>
-        <vavr.version>0.10.4</vavr.version>
-        <cucumber.version>7.10.1</cucumber.version>
-        <model.mapper.version>3.1.1</model.mapper.version>
+        <allure-maven.version>2.12.0</allure-maven.version>
         <allure.version>2.21.0</allure.version>
         <apache.commons.version>3.12.0</apache.commons.version>
-        <aspectj.version>1.9.19</aspectj.version>
-        <lombok.version>1.18.24</lombok.version>
-        <gherkin.version>26.0.3</gherkin.version>
-        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <aspectj-maven-plugin.version>1.14.0</aspectj-maven-plugin.version>
-        <allure-maven.version>2.12.0</allure-maven.version>
-        <maven-surefire-plugin.version>3.0.0-M9</maven-surefire-plugin.version>
+        <aspectj.java.version>16</aspectj.java.version>
+        <aspectj.version>1.9.19</aspectj.version>
+        <cucumber.version>7.10.1</cucumber.version>
+        <gherkin.version>26.0.3</gherkin.version>
+        <lombok.version>1.18.24</lombok.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M9</maven-surefire-plugin.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <model.mapper.version>3.1.1</model.mapper.version>
+        <playwright.version>1.28.1</playwright.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <test-ng.version>7.7.1</test-ng.version>
+        <vavr.version>0.10.4</vavr.version>
     </properties>
 
     <dependencies>
@@ -265,12 +265,18 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.surefire</groupId>
+                            <artifactId>surefire-testng</artifactId>
+                            <version>${maven-surefire-plugin.version}</version>
+                        </dependency>
+                    </dependencies>
                     <configuration>
                         <argLine>
                             -javaagent:"${settings.localRepository}"/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                         </argLine>
                         <useSystemClassLoader>true</useSystemClassLoader>
-                        <forkCount>0</forkCount>
                         <includes>
                             <include>**/*Test.java</include>
                         </includes>
@@ -288,6 +294,10 @@
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

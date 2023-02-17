@@ -34,7 +34,7 @@ luma:
           #          firefoxUserPrefs:
           #            key: "value"
           #            key1: "value1"
-          headless: true
+          headless: false
           #          ignoreAllDefaultArgs: false
           #          ignoreDefaultArgs:
           #            - arg1
@@ -150,7 +150,7 @@ pages:
       relatedTermsBlock:
         self: ${pages.searchResults.results.self}//dl[@class='block']
       content:
-        self: ${pages.searchResults.results.self}/div[contains(@class,'products wrapper')]
+        self: ${pages.searchResults.results.self}//div[contains(@class,'products wrapper')]
         items:
           self: LISTITEM
           product:

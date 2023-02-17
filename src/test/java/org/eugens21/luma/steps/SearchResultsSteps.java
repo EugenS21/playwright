@@ -15,6 +15,7 @@ import org.eugens21.luma.properties.Application;
 import org.eugens21.luma.properties.PageLocators;
 import org.eugens21.luma.storage.ScenarioContext;
 import org.eugens21.luma.web.functional.Attachment;
+import org.eugens21.luma.web.functional.Loggable;
 import org.eugens21.luma.web.pages.complex_model.search_results.grid.ProductItemInfo;
 import org.eugens21.luma.web.pages.enums.SortByEnum;
 import org.eugens21.luma.web.pages.enums.SortEnum;
@@ -31,6 +32,7 @@ import static org.eugens21.luma.enums.StorageKey.*;
 
 @Attachment
 @FieldDefaults(makeFinal = true, level = PRIVATE)
+@Loggable
 public class SearchResultsSteps extends CommonUiStep {
 
     ProductInfoMapping productInfoMapping;
@@ -114,7 +116,6 @@ public class SearchResultsSteps extends CommonUiStep {
         softAssertions.assertThat(productItemInfo)
                 .describedAs("Expecting to found <%d> products", productsOnGrid)
                 .hasSizeGreaterThan(9);
-//                .hasSize(productsOnGrid);
     }
 
     @When("he is choosing to switch to '{viewMode}' view")
