@@ -1,0 +1,2 @@
+2023-02-17T13:10:18.177Z DEBUG 2299 --- [           main] o.e.luma.web.aspect.WaitForStateAspect   : Waiting for Locator@//div[@class='header content']//div[contains(@class,'search-autocomplete')] to be VISIBLE
+2023-02-17T13:10:18.840Z DEBUG 2299 --- [           main] o.e.luma.web.aspect.WaitForStateAspect   : Waiting for Locator@//div[@class='header content']//div[contains(@class,'search-autocomplete')] to be VISIBLE
